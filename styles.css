@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap');
+* { font-family: "DM Sans", sans-serif;}
+
+@keyframes appear{
+  0%{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  10%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes textglow{
+  50%{
+    text-shadow:  0px 1px 10px whitesmoke;
+  }
+}
+
+
+
+@keyframes fadein{
+  from{
+    opacity:0;
+    transform: translateY(50px)
+  }
+  to{
+    opacity:1;
+    transform: translateY(0px);
+  }
+}
+@keyframes fadeout{
+  from{
+    opacity:1;
+    transform: (0px);
+  }
+  to{
+    opacity:0;
+    transform: translateY(50px);
+  }
+}
+body {
+  background-image:linear-gradient(rgb(37, 140, 214),gainsboro);
+  height: 2000px;
+}
+.topnav.scroll{
+  border-radius: 30px;
+  transform: translateX(calc(100vw - 450px));
+}
+
+.topnav {
+  float: left;
+  width: 420px;
+  position: sticky;
+
+  top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  z-index: 1;
+  display: flex;
+  border-radius: 5px;
+  font-size: 16;
+  transform: translateX(0);
+  background-color: color-mix(in srgb, #fff 12%, transparent);
+  opacity: 0.85;
+  backdrop-filter: blur(8px) saturate(150%);
+  box-shadow: inset 0 0 5px color-mix(in srgb, #fff 70%, transparent);
+  transition: 
+    border-radius 400ms cubic-bezier(1,0.0,0.4,1),
+    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
+    background-color 400ms 
+      cubic-bezier(1, 0.0, 0.4, 1),
+    box-shadow 400ms
+      cubic-bezier(1, 0.0, 0.4, 1);
+
+
+}
+@media (max-width: 600px) {
+  .topnav {
+    transition: none;       
+    transform: none;        
+    border-radius: 10px;    
+  }
+
+  .topnav.shrink {
+    transform: none;        
+    border-radius: 10px;    
+  }
+}
+.topnav a {
+  animation: 5s textglow infinite;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav button {
+  animation: 5s textglow infinite;
+  color: #f2f2f2;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav button:hover{
+  color: gray;
+  transform: scale(105%);
+}
+.topnav button:active{
+  color: rgb(0, 81, 212);
+  text-shadow: gray;
+}
+.topnav a:hover {
+  color: rgb(62, 62, 62);
+  transform: scale(105%);
+  text-shadow: gray;
+}
+
+.topnav a.active {
+  float: left;
+  color: white;
+}
+
+.aboutMe {
+  width: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  justify-content: center;
+
+  overscroll-behavior: none;
+  display: flexbox;
+  flex-direction: column;
+
+}
+.aboutMe div{
+    border-radius: 5pt;
+    background-color: color-mix(in srgb, #fff 12%, transparent);
+  backdrop-filter: blur(9px) saturate(150%);
+  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
+  transition: 
+    background-color 400ms 
+      cubic-bezier(1, 0.0, 0.4, 1),
+    box-shadow 400ms
+      cubic-bezier(1, 0.0, 0.4, 1);
+}
+.aboutMe h1{
+  animation: 5s textglow infinite;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+.aboutMe h2{
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 21px;
+}
+.aboutMe h3{
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 19px;
+}
+
+.projects{
+  width: 400px;
+  height: 660px;
+  position: absolute;
+  left: 50%;
+  top: 130%;
+  transform: translate(-50%, -50%);
+  gap: 10px;
+
+  align-items: center;
+  justify-content: center;
+
+  overscroll-behavior: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.projects div{
+  opacity: 0;
+  width: 400px;
+  animation: appear ease-in-out forwards;
+  animation-timeline: view();
+  flex: 0 1 40px;
+
+  border-radius: 5pt;
+  background-color: color-mix(in srgb, #fff 12%, transparent);
+  backdrop-filter: blur(9px) saturate(150%);
+  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
+  
+  transition: 
+    background-color 400ms 
+      cubic-bezier(1, 0.0, 0.4, 1),
+    box-shadow 400ms
+      cubic-bezier(1, 0.0, 0.4, 1),
+    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
+    flex-grow 400ms cubic-bezier(1,0.0,0.4,1);
+}
+.projects div button{
+  background-color: transparent;
+  border: none;
+  padding: 3%;
+  color: #f2f2f2;
+  text-align: center;
+  font-size: 19px;
+  font-weight: bolder;
+  width: 100%;
+}
+
+.projects div button:hover{
+  transition: 0.4s;
+  color: rgb(58, 126, 204);
+  transform: translateX(-10px);
+}
+.projects div button span{
+  position: relative;
+}
+.projects div button span:after{
+  content: '\00BB';
+  opacity: 0;
+}
+
+.projects div button:hover span{
+  content: '\00bb';
+  opacity: 1;
+}
+.projects div button:hover span::after{
+  content: '\00bb';
+  opacity: 1;
+  transition: opacity 0.4 ease;
+}
+.projects div button:active{
+  color: rgb(15, 80, 134);
+  flex-grow:3;
+}
+.projects h1{
+  animation: 5s textglow infinite;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+.projects h2{
+  color: #f2f2f2;
+  transform: translateX(0px);
+  text-align: center;
+}
+
+.projects div.grow{
+  flex: 1 1 220px;
+}
+.projects div.shrink{
+  flex: 0 0 40px;
+}
+
+.projects div img{
+  width: 85%;
+  height: 85%;
+  align-items: center;
+  border-radius: 10px;
+  border: #f2f2f2;
+  border-width: 5px;
+  box-shadow:  0 0 10px whitesmoke;
+}
+
+.projects div section{
+  opacity: 1;
+  text-align: center;
+  color: #f2f2f2;
+  transition: opacity 1 ease;
+}
+.projects div section a{
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: underline;
+}
+.projects div section a:hover{
+  color: blue;
+}
+
+.project-animate{
+  animation: fadein 0.1s ease;
+}
+
+.project-unanimate{
+  animation: fadeout 0.1s ease-in-out;
+}
