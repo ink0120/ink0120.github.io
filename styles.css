@@ -75,18 +75,7 @@ body {
 
 
 }
-@media (max-width: 600px) {
-  .topnav {
-    transition: none;       
-    transform: none;        
-    border-radius: 10px;    
-  }
 
-  .topnav.shrink {
-    transform: none;        
-    border-radius: 10px;    
-  }
-}
 .topnav a {
   animation: 5s textglow infinite;
   color: #f2f2f2;
@@ -163,7 +152,7 @@ body {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 21px;
+  font-size: 19.5px;
 }
 .aboutMe h3{
   color: #f2f2f2;
@@ -300,4 +289,18 @@ body {
 
 .project-unanimate{
   animation: fadeout 0.1s ease-in-out;
+}
+@media (max-width: 650px) {
+  .topnav,
+  .topnav.shrink {
+    width: 390px;
+    transition: none !important;
+    transform: none !important;
+    border-radius: 10px !important;
+  }
+  .projects div,
+  .projects div section {
+    opacity: 1 !important;
+    height: auto !important;
+  }  
 }
