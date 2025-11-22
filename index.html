@@ -17,7 +17,7 @@
       </div>
       <section class="section">
          <div class="aboutMe" id ="aboutMe">
-            <div>
+            <div class = "header">
             <h1>Ink20</h1>
             </div>
             <div>
@@ -29,7 +29,7 @@
 
       <section class="section">
          <div class="projects" id="projects">
-            <div>
+            <div class = "header">
                <h1>Projects</h1>
             </div>
             <div id="project1">
@@ -45,35 +45,40 @@
 
          </div>
       </section>
-<section class="section">
-  <div class="contacts" id="contacts">
+      <section class="section">
+         <div class="contacts" id="contacts">
 
-    <div>
-      <h1>Contact me!</h1>
-    </div>
+            <div class = "header">
+               <h1>Contact me!</h1>
+            </div>
+            <div>
 
-    <div class="minilinkdiv">
-      <a href="https://github.com/ink0120" target="_blank">
-        <i class="fa fa-github"></i> GitHub
-      </a>
-      <p>| @ink0120</p>
-    </div>
+               <div class="minilinkdiv">
+                  <a href="https://github.com/ink0120" target="_blank">
+                  <i class="fa fa-github"></i> GitHub
+                  </a>
+                  <p>| @ink0120</p>
+               </div>
 
-    <div class="minilinkdiv">
-      <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
-        <i class="fa fa-linkedin-square"></i> LinkedIn
-      </a>
-      <p>| Ines Sebaihi</p>
-    </div>
-
-    <div class="minilinkdiv">
-      <button><span>Email</span></button>
-      <p>| ines.sebaihi20@gmail.com</p>
-    </div>
-
-  </div>
-</section>
+               <div class="minilinkdiv">
+                  <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
+                  <i class="fa fa-linkedin-square"></i> LinkedIn
+                  </a>
+                  <p>| Ines Sebaihi</p>
+               </div>
+            </div>
+            <div>
+               <div class="minilinkdiv">
+                  <button onclick="copyText()"><span>Email</span></button>
+                  <p>| ines.sebaihi20@gmail.com</p>
+               </div>
+            </div>
+         </div>
+      </section>
    </div>
+   <footer>
+      <p> Ines Sebaihi 2025</p>
+   </footer>
 
 </body>
 <script>
@@ -169,7 +174,7 @@ function openProject(projectID) {
       if (projectID === "project1"){
          projectImage.src = "Chemistry-Uno.jpeg";
          projectTitle.innerHTML = "Chemistry card game";
-         projectDesc.innerHTML = "Skills: Python, SQL";
+         projectDesc.innerHTML = "Skills: Python, SQLlite";
          gitHubLink.title = "Link on github.";
          gitHubLink.href = "youtube.com";
          gitHubLink.textContent = "Link to gitHub page";
@@ -180,6 +185,33 @@ function openProject(projectID) {
       } else if (projectID === "project3"){
          return true;
       }
+   }
+
+   function copyText(){
+      navigator.clipboard.writeText("ines.sebaihi20@gmail.com");
+      notification("Copied email to clipboard!");
+   }
+
+   function notification(text){
+      const notif = document.createElement("div");
+      notif.classList.add("notification");
+      requestAnimationFrame(() => {
+         notif.classList.add("fadein");
+      });
+      const notiftext = document.createElement("p");
+      
+      notiftext.innerHTML = text;
+      notif.appendChild(notiftext);
+      
+
+      document.body.appendChild(notif);
+      setTimeout(() => {
+         notif.classList.remove("fadein")
+         notif.classList.add("fadeout");
+
+         notif.addEventListener("transitionend", () => notif.remove())
+      }, 3000);
+
    }
 
 </script>
