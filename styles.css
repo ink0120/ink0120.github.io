@@ -60,7 +60,7 @@
 @keyframes fadeout{
   from{
     opacity:1;
-    transform: (0px);
+    transform: translateY(0px);
   }
   to{
     opacity:0;
@@ -281,7 +281,7 @@ body {
 }
 
 .projects div button:hover{
-  transition: 0.4s;
+  transition: 0.4s ease;
   color: rgb(58, 126, 204);
   transform: translateX(-10px);
 }
@@ -342,7 +342,7 @@ body {
   opacity: 1;
   text-align: center;
   color: #f2f2f2;
-  transition: opacity 1 ease;
+  transition: opacity 1s ease;
 }
 .projects div section a{
   color: #f2f2f2;
@@ -479,7 +479,7 @@ body {
   font-size: 13px;
   content: ' copy';
   opacity: 1;
-  transition:  0.4 ease;
+  transition:  0.4s ease;
 }
 .contacts div button:active{
   color: rgb(15, 80, 134);
