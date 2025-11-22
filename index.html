@@ -5,47 +5,79 @@
    <link rel="stylesheet" type="text/css" href="styles.css">
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-   <div class="topnav">
-   <a class="active" href="#home">Home</a>
-   <button>About me</button>
-   <button>Projects</button>
-   <button>Contact me</button>
-   </div>
-   <div class="aboutMe">
-       <div>
-       <h1>Ink20</h1>
-       </div>
-       <div>
-       <h2>First year BSc Mathematics with Computer Science student @ QMUL</h2>
-       <h3> Aspiring full-stack developer</h3>
-       </div>
-   </div>
-   <div class="projects">
-      <div>
-         <h1>Projects</h1>
+   <div class="gradient-container">
+      <div class="topnav">
+         <p>Ink20</p>
+         <button onClick="goTo('aboutMe')">About</button>
+         <button onClick="goTo('projects')">Projects</button>
+         <button onClick="goTo('contacts')">Contact</button>
       </div>
-      <div id="project1">
-         <button onclick="openProject('project1')"> <span>  Chemistry-Uno </span> </button>
-      </div>
-      <div id="project2">
-         <button onclick="openProject('project2')""><span>  WIP! </span> </button>
-      </div>
+      <section class="section">
+         <div class="aboutMe" id ="aboutMe">
+            <div>
+            <h1>Ink20</h1>
+            </div>
+            <div>
+            <h2>First year BSc Mathematics with Computer Science student @ QMUL</h2>
+            <h3> Aspiring full-stack developer</h3>
+            </div>
+         </div>
+      </section>
 
-      <div id="project3">
-         <button onclick="openProject('project3')""> <span>  WIP! </span> </button>
-      </div>
+      <section class="section">
+         <div class="projects" id="projects">
+            <div>
+               <h1>Projects</h1>
+            </div>
+            <div id="project1">
+               <button onclick="openProject('project1')"> <span>  Chemistry-Uno </span></button>
+            </div>
+            <div id="project2">
+               <button onclick="openProject('project2')""><span>  WIP! </span> </button>
+            </div>
 
+            <div id="project3">
+               <button onclick="openProject('project3')""> <span>  WIP! </span> </button>
+            </div>
+
+         </div>
+      </section>
+      <section class = "section">
+         <div class = "contacts" id = "contacts">
+            <div><h1>Contact me!</h1></div>
+            <div>
+               <div class="minilinkdiv">
+                  <a href="https://github.com/ink0120" target="_blank"><i class="fa fa-github"></i>GitHub</a>
+                  <p> | @ink0120</p>
+               </div>
+               
+            <div class = "minilinkdiv">
+               <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank"><i class="fa fa-linkedin-square"></i>LinkedIn</a>
+               <p> | Ines Sebaihi </p>
+            </div>
+            </div>
+            <div>
+            <div class = "minilinkdiv">
+               <button><span>Email</span></button>
+               <p>| ines.sebaihi20@gmail.com</p>
+            </div>
+         </div>
+
+      </section>
    </div>
-  
+
 </body>
 <script>
-   window.onscroll = function() {shrinkTopnav()};
+   window.addEventListener("scroll", () => {
+      slideTopnav();
+   });
 
-   function shrinkTopnav() {
+
+   function slideTopnav() {
       const nav = document.querySelector(".topnav");
-      let width = window.innerWidth;
 
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
          nav.classList.add("scroll");
@@ -53,6 +85,18 @@
          nav.classList.remove("scroll");
       }
    }
+
+   function goTo(page) {
+      const goTo = document.getElementById(page);
+      if (page == "aboutMe"){
+         globalThis. scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      }else{
+         goTo.scrollIntoView({
+         behavior: 'smooth'
+         });
+      }
+   }
+
 
 function openProject(projectID) {
   const projects = document.querySelectorAll(".projects > div");
@@ -131,5 +175,6 @@ function openProject(projectID) {
          return true;
       }
    }
+
 </script>
 </html>
