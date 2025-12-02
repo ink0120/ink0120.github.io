@@ -86,19 +86,7 @@ body {
   scroll-behavior: smooth;
   scroll-snap-stop: always;
 }
-.image{
-  animation: rotation 20s linear infinite;
-  top: 40px;
-  width: min(400px, 70%);
-  height: auto;
-  position: fixed;
-}
-.image.left{
-  left: 80%;
-}
-.image.right{
-  right: 80%;
-}
+
 .gradient-container {
   height: 100%;
   background: linear-gradient(rgb(102, 194, 224), rgb(17, 160, 217));
