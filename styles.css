@@ -86,7 +86,18 @@ body {
   scroll-behavior: smooth;
   scroll-snap-stop: always;
 }
-
+.image{
+  animation: infinite rotation 20s linear;
+  top: 40px;
+  width: 70%;
+  position: fixed;
+}
+.image.left{
+  left: 70%;
+}
+.image.right{
+  right: 70%;
+}
 .gradient-container {
   height: 100%;
   background: linear-gradient(rgb(102, 194, 224), rgb(17, 160, 217));
@@ -361,6 +372,9 @@ body {
   animation: fadeout 0.1s ease-in-out;
 }
 @media (max-width: 850px) {
+  .image{
+    opacity: 0;
+  }
   .topnav,
   .topnav.shrink {
     align-items: center;
