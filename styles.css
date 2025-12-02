@@ -89,15 +89,15 @@ body {
 .image{
   animation: rotation 20s linear infinite;
   top: 40px;
-  width: 70%;
+  width: min(400px, 70%);
   height: auto;
   position: fixed;
 }
 .image.left{
-  left: 70%;
+  left: 80%;
 }
 .image.right{
-  right: 70%;
+  right: 80%;
 }
 .gradient-container {
   height: 100%;
