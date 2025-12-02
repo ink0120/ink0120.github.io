@@ -87,9 +87,10 @@ body {
   scroll-snap-stop: always;
 }
 .image{
-  animation: infinite rotation 20s linear;
+  animation: rotation 20s linear infinite;
   top: 40px;
   width: 70%;
+  height: auto;
   position: fixed;
 }
 .image.left{
