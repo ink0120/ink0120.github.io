@@ -1,218 +1,53 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-   <title> Ines Sebaihi </title>
-   <link rel="stylesheet" type="text/css" href="styles.css">
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-<body>
-   <div class="gradient-container">
-      <div class="topnav">
-         <p>Ink20</p>
-         <button onClick="goTo('aboutMe')">About</button>
-         <button onClick="goTo('projects')">Projects</button>
-         <button onClick="goTo('contacts')">Contact</button>
+   <head>
+      <title> Ines Sebaihi </title>
+      <link rel="stylesheet" type="text/css" href="styles.css">
+      <script src="script.js"></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+         
+
+      <div class="container">
+      <section class = "AboutMe">
+         <div class = "Headers">
+         <h1>Ines Sebaihi</h1>
+         </div>
+         <div class = "Textbox">
+            <h2>First year BSc Mathematics with Computer Science student @ QMUL 
+            </h2>
+
+            <img src="mii_icon.png" width="200">
+         </div>
+         <button>Read more</button>
+      </section>
+      <section class = "MyProjects">
+         <div class = "Headers">
+         <h1>Projects</h1>
+         </div>
+      </section>
+            <section class = "ContactMe">
+         <div class = "Headers">
+         <h1>Get in contact!</h1>
+         </div>
+         <div class="Textbox">
+            <a href="https://github.com/ink0120" target="_blank">
+            <i class="fa fa-github"></i> GitHub</a>
+            <p>| @ink0120</p>
+         </div>
+         <div class="Textbox">
+            <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
+            <i class="fa fa-linkedin-square"></i> LinkedIn</a>
+            <p>| Ines Sebaihi</p>
+         </div>
+      </section>
       </div>
-      <section class="section">
-         <div class="aboutMe" id ="aboutMe">
-            <div class = "header">
-            <h1>Ink20</h1>
-            </div>
-            <div>
-            <h2>First year BSc Mathematics with Computer Science student @ QMUL</h2>
-            <h3> Aspiring full-stack developer</h3>
-            </div>
-         </div>
-      </section>
-
-      <section class="section">
-         <div class="projects" id="projects">
-            <div class = "header">
-               <h1>Projects</h1>
-            </div>
-            <div id="project1">
-               <button onclick="openProject('project1')"> <span>  Chemistry-Uno </span></button>
-            </div>
-            <div id="project2">
-               <button onclick="openProject('project2')"><span>  WIP! </span> </button>
-            </div>
-
-            <div id="project3">
-               <button onclick="openProject('project3')"> <span>  WIP! </span> </button>
-            </div>
-
-         </div>
-      </section>
-      <section class="section">
-         <div class="contacts" id="contacts">
-
-            <div class = "header">
-               <h1>Contact me!</h1>
-            </div>
-            <div>
-
-               <div class="minilinkdiv">
-                  <a href="https://github.com/ink0120" target="_blank">
-                  <i class="fa fa-github"></i> GitHub
-                  </a>
-                  <p>| @ink0120</p>
-               </div>
-
-               <div class="minilinkdiv">
-                  <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
-                  <i class="fa fa-linkedin-square"></i> LinkedIn
-                  </a>
-                  <p>| Ines Sebaihi</p>
-               </div>
-            </div>
-            <div>
-               <div class="minilinkdiv">
-                  <button onclick="copyText()"><span>Email</span></button>
-                  <p>| ines.sebaihi20@gmail.com</p>
-               </div>
-            </div>
-         </div>
-      </section>
-   </div>
-   <footer>
-      <p> Ines Sebaihi 2025</p>
-   </footer>
-
-</body>
-<script>
-   window.addEventListener("scroll", () => {
-      slideTopnav();
-   });
-
-
-   function slideTopnav() {
-      const nav = document.querySelector(".topnav");
-
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-         nav.classList.add("scroll");
-      } else {
-         nav.classList.remove("scroll");
-      }
-   }
-
-   function goTo(page) {
-      const goTo = document.getElementById(page);
-      if (page == "aboutMe"){
-         globalThis. scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      }else{
-         goTo.scrollIntoView({
-         behavior: 'smooth'
-         });
-      }
-   }
-
-
-function openProject(projectID) {
-  const projects = document.querySelectorAll(".projects > div");
-  const currentProject = document.getElementById(projectID);
-  const isGrown = currentProject.classList.contains("grow");
-
-  projects.forEach(div => {
-    if (div !== currentProject && div.classList.contains("grow")) {
-      div.classList.remove("grow");
-      div.classList.add("shrink");
-      deleteProjectInfo(div.id);
-    } else {
-      div.classList.remove("grow", "shrink", "section");
-    }
-  });
-
-  if (!isGrown) {
-    displayProject(projectID);
-    currentProject.classList.remove("shrink");
-    currentProject.classList.add("grow");
-  } else {
-    currentProject.classList.remove("grow");
-    currentProject.classList.add("shrink");
-    deleteProjectInfo(projectID);
-  }
-}
-
-   function displayProject(projectID){
-      const currentprojectdiv = document.getElementById(projectID);
-
-      const newDiv = document.createElement("section");
-      newDiv.classList.add("project-animate");
-
-      let [projectTitle, projectImage,projectDesc,gitHubLink] = getProjectInfo(projectID);
-      newDiv.appendChild(projectTitle);
-      newDiv.appendChild(projectImage);
-      newDiv.appendChild(projectDesc);
-      newDiv.appendChild(gitHubLink);
-
-      currentprojectdiv.appendChild(newDiv);
-   }
-   
-   function deleteProjectInfo(projectID) {
-   const currentProjectDiv = document.getElementById(projectID);
-   currentProjectDiv.classList.add("project-unanimate");
-
-   const sections = currentProjectDiv.querySelectorAll("section");
-
-   sections.forEach(section => {
-      section.classList.add("project-unanimate");
-
-      section.addEventListener("animationend", () => {
-         section.remove();
-      });
-   });
-   }
-
-
-   function getProjectInfo(projectID){
-         let projectTitle = document.createElement("h2");
-         let projectImage = document.createElement("img");
-         let projectDesc = document.createElement("p");
-         let gitHubLink = document.createElement("a");
-      if (projectID === "project1"){
-         projectImage.src = "Chemistry-Uno.jpeg";
-         projectTitle.innerHTML = "Chemistry card game";
-         projectDesc.innerHTML = "Skills: Python, SQLlite";
-         gitHubLink.title = "Link on github.";
-         gitHubLink.href = "youtube.com";
-         gitHubLink.textContent = "Link to gitHub page";
-
-         return [projectTitle,projectImage,projectDesc,gitHubLink];
-      } else if (projectID === "project2"){
-         return true;
-      } else if (projectID === "project3"){
-         return true;
-      }
-   }
-
-   function copyText(){
-      navigator.clipboard.writeText("ines.sebaihi20@gmail.com");
-      notification("Copied email to clipboard!");
-   }
-
-   function notification(text){
-      const notif = document.createElement("div");
-      notif.classList.add("notification");
-      requestAnimationFrame(() => {
-         notif.classList.add("fadein");
-      });
-      const notiftext = document.createElement("p");
-      
-      notiftext.innerHTML = text;
-      notif.appendChild(notiftext);
-      
-
-      document.body.appendChild(notif);
-      setTimeout(() => {
-         notif.classList.remove("fadein")
-         notif.classList.add("fadeout");
-
-         notif.addEventListener("transitionend", () => notif.remove())
-      }, 3000);
-
-   }
-
-</script>
+   </body>
 </html>

@@ -14,247 +14,81 @@
         background-color: transparent;
     }
 }
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+h1{
+  font-size: 27px;
 }
 
-@keyframes textglow{
-  50%{
-    text-shadow:  0px 1px 10px whitesmoke;
-  }
+h2{
+  font-size: 24px;
+}
+body{
+  color: #f2f2f2;
+  background-image: linear-gradient(#92bcff,rgb(57, 125, 252));
 }
 
-@keyframes boxglow {
-  50% {
-    box-shadow: inset 0 0 5px color-mix(in srgb, white 70%, transparent 30%), 0 0 3px color-mix(in srgb, white 70%, transparent 30%);
-    transform: translateY(5px);
-  }
+.topnav{
+  position: sticky;
 }
 
-@keyframes appear{
-  0%{
-    opacity: 0;
-    transform: translateX(-100px);
-  }
-  20%{
-    opacity: 1;
-    transform: translateX(0px);
-  }
-}
-@keyframes fadein{
-  from{
-    opacity:0;
-    transform: translateY(50px)
-  }
-  to{
-    opacity:1;
-    transform: translateY(0px);
-  }
-}
-@keyframes fadeout{
-  from{
-    opacity:1;
-    transform: translateY(0px);
-  }
-  to{
-    opacity:0;
-    transform: translateY(50px);
-  }
+.container{
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
 }
 
-.scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-
-.scrollbar {
-  -ms-overflow-style: none;  
-  scrollbar-width: none; 
-}
-
-body {
-  margin: 0;
-  height: 320vh;
-  background-color: #f2f2f2;
-  scroll-snap-type: y mandatory; 
-  scroll-behavior: smooth;
-  scroll-snap-stop: always;
-}
 
 .gradient-container {
-  height: 100%;
-  background: linear-gradient(rgb(102, 194, 224), rgb(17, 160, 217));
-}
-.section{
-  background-color: transparent;
+section{
+  align-items: center;
+  scroll-snap-align: start;
   height: 100dvh;
   width: 100%;
-  scroll-snap-type: mandatory;
-  scroll-snap-align: start;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.topnav.scroll{
-  border-radius: 30px;
-  width: auto;
-  transform: translateX(calc(100vw - 400px));
-}
-
-.topnav {
+.Headers{
+  margin: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rebeccapurple;
+  width: 80%;
+  height: 10%;
   float: left;
-  width: auto;
-  height: 60px;
-  position: sticky;
-
-  top: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
-  z-index: 1;
-  display: flex;
-  gap: 10px;
-  border-radius: 7px;
-  align-items: center;
-  transform: translateX(10px);
-  background-color: color-mix(in srgb, #fff 12%, transparent);
-  opacity: 0.85;
-  backdrop-filter: blur(8px) saturate(150%);
-  box-shadow: inset 0 0 5px color-mix(in srgb, #fff 70%, transparent);
-  transition: 
-    border-radius 400ms cubic-bezier(1,0.0,0.4,1),
-    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
-    background-color 400ms 
-      cubic-bezier(1, 0.0, 0.4, 1),
-    box-shadow 400ms
-      cubic-bezier(1, 0.0, 0.4, 1);
-}
-
-.topnav p{
-  animation: 5s textglow infinite;
-  color: #f2f2f2;
-  text-align: center;
-  align-items: center;
-  padding: 20px 20px;
-  text-decoration: underline;
-  font-size: 19px;
-}
-
-.topnav button {
-  animation: 5s textglow infinite;
-  color: #f2f2f2;
-  background-color: transparent;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-  padding-right: 20px;
-}
-
-.topnav button:hover{
-  color: rgb(163, 214, 255);
-  transform: scale(105%);
-}
-.topnav button:active{
-  color: rgb(0, 81, 212);
-  text-shadow: gray;
-}
-
-
-.aboutMe {
-  width: 400px;
-  position: absolute;
-  left: 50%;
-  top: 50vh;
-  transform: translate(-50%, -50%);
-  align-items: center;
-  justify-content: center;
-
-  overscroll-behavior: none;
-  display: flexbox;
-  flex-direction: column;
-
-}
-.aboutMe div{
-  border-radius: 5pt;
-  background-color: color-mix(in srgb, #fff 12%, transparent);
-  backdrop-filter: blur(9px) saturate(150%);
-  box-shadow:  inset 0 0 3px rgba(255, 255, 255, 0.7),
-  0 0 3px rgba(255, 255, 255, 0.7);
-  transition: 
-    background-color 400ms 
-      cubic-bezier(1, 0.0, 0.4, 1),
-    box-shadow 400ms
-      cubic-bezier(1, 0.0, 0.4, 1);
-}
-.header{
-  animation: 5s boxglow infinite;
-  transform: translateY(0px);
-}
-
-.aboutMe h1{
-  animation: 5s textglow infinite;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
-}
-.aboutMe h2{
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-.aboutMe h3{
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 19px;
-}
-.aboutMe p{
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-}
-.projects{
-  width: 400px;
-  height: 660px;
-  left: 50%;
-  position: absolute;
-  top: 150vh;
-  transform: translate(-50%, -50%);
-  gap: 10px;
-
-  align-items: center;
-  justify-content: center;
-
-  overscroll-behavior: none;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.projects div{
-  opacity: 0;
-  animation: appear 1.5s both ease-out;
-  animation-timeline: view();       
-
-  animation-range: cover 0% cover 100%;
-  width: 400px;
-
-  flex: 0 1 40px;
 
   border-radius: 5pt;
-  background-color: color-mix(in srgb, #fff 12%, transparent);
+  
   backdrop-filter: blur(9px) saturate(150%);
   box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
+  background-color: color-mix(in srgb, #fff 12%, transparent);
+  
+  transition: 
+    background-color 400ms 
+      cubic-bezier(1, 0.0, 0.4, 1),
+    box-shadow 400ms
+      cubic-bezier(1, 0.0, 0.4, 1),
+    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
+    flex-grow 400ms cubic-bezier(1,0.0,0.4,1);
+}
+.Headers h1{
+  text-align: center;
+
+}
+.Headers img{
+  width: auto;
+}
+.Textbox {
+  padding: 10px;
+  margin: 10px;
+  width: 90%;
+  display: flex;
+
+  border-radius: 5pt;
+  
+  backdrop-filter: blur(9px) saturate(150%);
+  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
+  background-color: color-mix(in srgb, #fff 12%, transparent);
   
   transition: 
     background-color 400ms 
@@ -265,11 +99,14 @@ body {
     flex-grow 400ms cubic-bezier(1,0.0,0.4,1);
 }
 
-.projects.appear{
-  transform: translateX(0px);
-  opacity: 1;
+.AboutMe{
+  font: optional;
 }
-.projects div button{
+.MyProjects{
+  font: optional;
+}
+
+.MyProjects div button{
   background-color: transparent;
   border: none;
   padding: 3%;
@@ -280,250 +117,6 @@ body {
   width: 100%;
 }
 
-.projects div button:hover{
-  transition: 0.4s ease;
-  color: rgb(58, 126, 204);
-  transform: translateX(-10px);
-}
-.projects div button span{
-  position: relative;
-}
-.projects div button span:after{
-  content: '\00BB';
-  opacity: 0;
-}
-
-.projects div button:hover span{
-  content: '\00bb';
-  opacity: 1;
-}
-.projects div button:hover span::after{
-  content: '\00bb';
-  opacity: 1;
-  transition: opacity 0.4 ease;
-}
-.projects div button:active{
-  color: rgb(15, 80, 134);
-  flex-grow:3;
-}
-.projects h1{
-  animation: 5s textglow infinite;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
-}
-.projects h2{
-  color: #f2f2f2;
-  transform: translateX(0px);
-  text-align: center;
-}
-
-.projects div.grow{
-  flex: 1 1 220px;
-  top:150vh;
-}
-.projects div.shrink{
-  flex: 0 0 40px;
-}
-
-.projects div img{
-  width: 85%;
-  height: 85%;
-  align-items: center;
-  border-radius: 10px;
-  border: #f2f2f2;
-  border-width: 5px;
-  box-shadow:  0 0 10px whitesmoke;
-}
-
-.projects div section{
-  opacity: 1;
-  text-align: center;
-  color: #f2f2f2;
-  transition: opacity 1s ease;
-}
-.projects div section a{
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: underline;
-}
-.projects div section a:hover{
-  color: blue;
-}
-
-.project-animate{
-  animation: fadein 0.1s ease;
-}
-
-.project-unanimate{
-  animation: fadeout 0.1s ease-in-out;
-}
-@media (max-width: 850px) {
-  .image{
-    opacity: 0;
-  }
-  .topnav,
-  .topnav.shrink {
-    align-items: center;
-    justify-content: center;
-    transition: none !important;
-    transform: none !important;
-    border-radius: 10px !important;
-  }
-  .projects div,
-  .projects div section {
-    height: auto !important;
-    opacity: 1 !important;
-    transform: translateX(0px) !important;
-  }  
-}
-
-.contacts{
-  width: 400px;
-  height: 100%;
-  left: 50%;
-  position: absolute;
-  top: 250vh;
-  transform: translate(-50%, -50%);
-  gap: 10px;
-
-  align-items: center;
-  justify-content: center;
-
-  overscroll-behavior: none;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.contacts div{   
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  gap: 10px;
-
-  border-radius: 5pt;
-  
-  backdrop-filter: blur(9px) saturate(150%);
-  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
-  background-color: color-mix(in srgb, #fff 12%, transparent);
-  
-  transition: 
-    background-color 400ms 
-      cubic-bezier(1, 0.0, 0.4, 1),
-    box-shadow 400ms
-      cubic-bezier(1, 0.0, 0.4, 1),
-    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
-    flex-grow 400ms cubic-bezier(1,0.0,0.4,1);
-}
-
-.contacts h1{
-  animation: 5s textglow infinite;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
-}
-
-.contacts a,
-.contacts p {
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  padding: 5px;
-  font-size: 17px;
-}
-.contacts a{
-  text-align: left;
-}
-.contacts a:hover{
-  color: rgb(20, 114, 151);
-  text-decoration: underline;
-}
-
-.contacts button{
-  background-color: transparent;
-  border: none;
-  color: #f2f2f2;
-  font-size: 17px;
-  text-align: left;
-}
-.contacts button:hover{
-  color: rgb(23, 114, 141);
-  text-decoration: underline;
-}
-.contacts .minilinkdiv{
-  display: flex;
-  align-items: center;
-
-  flex-direction: row;
-
-  background-color: transparent;
-  backdrop-filter: none;
-  box-shadow: none;
-
-}
-
-.contacts div button span{
-  position: relative;
-}
-.contacts div button span:after{
-  opacity: 0;
-}
-
-.contacts div button:hover span{
-  opacity: 1;
-}
-.contacts div button:hover span::after{
-  font-size: 13px;
-  content: ' copy';
-  opacity: 1;
-  transition:  0.4s ease;
-}
-.contacts div button:active{
-  color: rgb(15, 80, 134);
-}
-
-.notification{
-  float: left;
-  width: 250px;
-  padding: 12px;
-  height: fit-content;
-  border: #f2f2f2;
-  border-radius: 10px;
-  transform: translateX(-100px);
-  background-color: rgb(51, 104, 153);
-  opacity: 0.85;
-  backdrop-filter: blur(9px) saturate(150%);
-  box-shadow: inset 0 0 6px color-mix(in srgb, #b6b3b3 70%, transparent);
-  transition: opacity 0.6s ease,
-    transform 0.6s ease-in-out,
-    background-color 0.9s ease;
-  position: fixed;
-  bottom: 10px;
-  z-index: 1;
-}
-.notification p{
-  color: rgb(103, 191, 255);
-}
-.notification.fadein{
-  opacity: 0.85;
-  background-color: #f2f2f2;
-  transform: translateX(10px);
-}
-.notification.fadeout{
-  opacity: 0;
-  transform: translateX(-100px);
-  background-color: rebeccapurple;
-}
-
-footer{
-  text-align: center;
-  height:auto;
-  background-color: #f2f2f2;
-  color: rgb(138, 208, 255);
+.ContactMe{
+  font: optional;
 }
