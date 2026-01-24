@@ -1,53 +1,100 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ines Sebaihi</title>
 
-<html>
-   <head>
-      <title> Ines Sebaihi </title>
-      <link rel="stylesheet" type="text/css" href="styles.css">
-      <script src="script.js"></script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- jQuery and Script -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
 
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   </head>
-   <body>
-         
+        <!-- Sidebar Navigation -->
+        <div class="topnav">
+            <button class="jelly" onclick="goTo('AboutMe')">
+                <i class="fa fa-home"></i>
+            </button>
+            <button class="jelly" onclick="goTo('MyProjects')">
+                <i class="fa fa-file-code-o"></i>
+            </button>
+            <button class="jelly" onclick="goTo('ContactMe')">
+                <i class="fa fa-at"></i>
+            </button>
+        </div>
 
-      <div class="container">
-      <section class = "AboutMe">
-         <div class = "Headers">
-         <h1>Ines Sebaihi</h1>
-         </div>
-         <div class = "Textbox">
-            <h2>First year BSc Mathematics with Computer Science student @ QMUL 
-            </h2>
+        <!-- About Me Section -->
+        <section class="AboutMe" id="AboutMe">
+            <div class="Headers jelly">
+                <h1>Ines Sebaihi</h1>
+            </div>
+            <div class="jelly">
+                <div class="Textbox">
+                    <h2 id="title">
+                        First year BSc Mathematics with Computing student @ QMUL
+                    </h2>
+                    <img src="mii_icon.png" width="200" id="mii_icon" alt="Profile Icon">
+                </div>
+            </div>
+            <button class="jelly">Read more</button>
+        </section>
 
-            <img src="mii_icon.png" width="200">
-         </div>
-         <button>Read more</button>
-      </section>
-      <section class = "MyProjects">
-         <div class = "Headers">
-         <h1>Projects</h1>
-         </div>
-      </section>
-            <section class = "ContactMe">
-         <div class = "Headers">
-         <h1>Get in contact!</h1>
-         </div>
-         <div class="Textbox">
-            <a href="https://github.com/ink0120" target="_blank">
-            <i class="fa fa-github"></i> GitHub</a>
-            <p>| @ink0120</p>
-         </div>
-         <div class="Textbox">
-            <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
-            <i class="fa fa-linkedin-square"></i> LinkedIn</a>
-            <p>| Ines Sebaihi</p>
-         </div>
-      </section>
-      </div>
-   </body>
+        <!-- My Projects Section -->
+        <section class="MyProjects" id="MyProjects">
+              <div class="Headers jelly">
+    <h1>Projects</h1>
+  </div>
+
+  <div class="projects">
+
+    <div class="project jelly" id="project1">
+      <button onclick="openProject('project1')">
+        <span>Project 1</span>
+      </button>
+    </div>
+
+    <div class="project jelly" id="project2">
+      <button onclick="openProject('project2')">
+        <span>Project 2</span>
+      </button>
+    </div>
+
+    <div class="project jelly" id="project3">
+      <button onclick="openProject('project3')">
+        <span>Project 3</span>
+      </button>
+    </div>
+
+  </div>
+        </section>
+
+        <!-- Contact Me Section -->
+        <section class="ContactMe" id="ContactMe">
+            <div class="Headers jelly">
+                <h1>Get in contact!</h1>
+            </div>
+            <div class="jelly">
+                <div class="Textbox">
+                    <a href="https://github.com/ink0120" target="_blank">
+                        <i class="fa fa-github"></i> GitHub
+                    </a>
+                    <span>| @ink0120</span>
+                </div>
+                <div class="Textbox">
+                    <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
+                        <i class="fa fa-linkedin-square"></i> LinkedIn
+                    </a>
+                    <span>| Ines Sebaihi</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
 </html>
