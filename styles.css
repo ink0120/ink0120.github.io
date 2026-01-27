@@ -103,6 +103,15 @@ canvas{
   height: 100dvh;       
 
 }
+
+@media only screen and (max-width: 650px) {
+  .topnav{
+    flex-direction: row;
+    top: 15px;
+    justify-content: center;    
+  }
+
+}
 .topnav button {
   animation: 7s buttonglow infinite;
   width: 55px;
@@ -119,6 +128,20 @@ canvas{
 .topnav button:hover{
   transition: 0.4s ease;
   transform: scale(10px);
+}
+
+.nav-button::after {
+    content: "";
+}
+
+.nav-button.hover-home::after {
+    content: "home";
+}
+.nav-button.hover-projects::after {
+    content: "projects";
+}
+.nav-button.hover-projects::after {
+    content: "contacts";
 }
 
 .container{

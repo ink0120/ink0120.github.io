@@ -32,8 +32,11 @@ function goTo(page){
     const gotopage = $("#"+ page)[0];
     gotopage.scrollIntoView({ behavior: 'smooth' });
 }
-
-
+function hovernavbutton(){
+    $("#nav1").addClass("hover-home");
+    $("#nav2").addClass("hover-projects");
+    $("#nav3").addClass("hover-contacts");
+}
 
 //myproject functions
 function openProject(projectID) {
@@ -94,7 +97,6 @@ function displayProject(projectID) {
     });
     }
 
-
    function getProjectInfo(projectID){
         const $projectTitle = $("<h2>");
         const $projectImage = $("<img>");
@@ -143,9 +145,12 @@ function displayProject(projectID) {
       }, 3000);
 
    }
-
+$("#nav1 span").text("home");
+$("#nav2 span").text("projects");
+$("#nav3 span").text("projects");
 //graph function tingy real time shi
 $(document).ready(function() {
+    hovernavbutton()
     function loop() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
