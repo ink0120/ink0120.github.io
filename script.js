@@ -1,3 +1,32 @@
+class ballz {
+  constructor(ctx,canvas) {
+    this.y = 200;
+    this.size = 2;
+    this.color = "white";
+    this.ctx = ctx; 
+    this.canvas = canvas;
+
+    this.x = Math.random() * (this.canvas.width);
+
+  }
+
+  draw() {
+    this.ctx.beginPath();
+    this.ctx.fillStyle = this.color;
+    this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    this.ctx.fill();
+  }
+
+  movement(){
+    if(this.x>this.canvas.width){
+        this.x=0;
+    }
+    this.x+=0.004;
+    this.y = 380*Math.sin(this.x)+(this.canvas.height/2)
+
+  }
+}
+
 //nav bar functions
 function goTo(page){
     const gotopage = $("#"+ page)[0];
@@ -33,20 +62,24 @@ function openProject(projectID) {
   }
 }
 
-function displayProject(projectID){
-    const currentprojectdiv = document.getElementById(projectID);
+function displayProject(projectID) {
+    const $currentProjectDiv = $("#" + projectID);
 
-      const newDiv = document.createElement("section");
-      newDiv.classList.add("project-animate");
+    const $newDiv = $("<section>")
+        .addClass("project-animate");
 
-      let [projectTitle, projectImage,projectDesc,gitHubLink] = getProjectInfo(projectID);
-      newDiv.appendChild(projectTitle);
-      newDiv.appendChild(projectImage);
-      newDiv.appendChild(projectDesc);
-      newDiv.appendChild(gitHubLink);
+    const [$projectTitle, $projectImage, $projectDesc, $gitHubLink] =
+        getProjectInfo(projectID);
 
-      currentprojectdiv.appendChild(newDiv);
-   }
+    $newDiv.append(
+        $projectTitle,
+        $projectImage,
+        $projectDesc,
+        $gitHubLink
+    );
+
+    $currentProjectDiv.append($newDiv);
+}
    
     function deleteProjectInfo(projectID) {
     const currentProjectDiv = document.getElementById(projectID);
@@ -57,30 +90,31 @@ function displayProject(projectID){
 
         setTimeout(() => {
         section.remove();
-        }, 150); // match your animation duration
+        }, 300); 
     });
     }
 
 
    function getProjectInfo(projectID){
-         let projectTitle = document.createElement("h2");
-         let projectImage = document.createElement("img");
-         let projectDesc = document.createElement("p");
-         let gitHubLink = document.createElement("a");
+        const $projectTitle = $("<h2>");
+        const $projectImage = $("<img>");
+        const $projectDesc = $("<p>");
+        const $gitHubLink  = $("<a>");
       if (projectID === "project1"){
-         projectImage.src = "Chemistry-Uno.jpeg";
-         projectTitle.innerHTML = "Chemistry card game";
-         projectDesc.innerHTML = "Skills: Python, SQLlite";
-         gitHubLink.title = "Link on github.";
-         gitHubLink.href = "youtube.com";
-         gitHubLink.textContent = "Link to gitHub page";
+        $projectImage.attr("src", "Chemistry-Uno.jpeg");
+        $projectTitle.text("Chemistry card game");
+        $projectDesc.text("Skills: Python, SQLite");
+        $gitHubLink
+            .attr("href", "https://youtube.com")
+            .attr("title", "Link on github.")
+            .text("Link to GitHub page");
 
-         return [projectTitle,projectImage,projectDesc,gitHubLink];
       } else if (projectID === "project2"){
          return true;
       } else if (projectID === "project3"){
          return true;
       }
+        return [$projectTitle, $projectImage, $projectDesc, $gitHubLink];
    }
 
    function copyText(){
@@ -109,3 +143,40 @@ function displayProject(projectID){
       }, 3000);
 
    }
+
+//graph function tingy real time shi
+$(document).ready(function() {
+    function loop() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const ball of balls) {
+            ball.draw();
+            ball.movement();
+        }
+
+        requestAnimationFrame(loop);
+    }
+
+    const canvas = document.getElementById("graph");
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const balls= [];
+
+
+    const ctx = canvas.getContext("2d");
+
+    while (balls.length < 80) {
+        const ball = new ballz(ctx,canvas);
+        balls.push(ball);
+    }
+    loop();
+    $("#mii_icon").hover(function() {
+        $(this).attr("src", "mii_icon2.png");
+    }, function() {
+        $(this).attr("src", "mii_icon.png"); // reset when mouse leaves
+    });
+
+        
+
+  });
