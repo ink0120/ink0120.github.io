@@ -56,13 +56,13 @@
 .jelly{
   border-radius: 5pt;
   
-  backdrop-filter: blur(9px) saturate(150%);
+  backdrop-filter: blur(7px) saturate(160%);
   box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
   background-color: color-mix(in srgb, #fff 12%, transparent);
   
   transition: 
     background-color 400ms 
-      cubic-bezier(1, 0.0, 0.4, 1),
+      cubic-bezier(1, 0.0, 0.4, 10),
     box-shadow 400ms
       cubic-bezier(1, 0.0, 0.4, 1),
     transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
@@ -100,7 +100,8 @@ canvas{
   top: 0;
   left: 1%;
   width: auto;        
-  height: 100dvh;       
+  height: 100dvh;    
+  z-index: 100; 
 
 }
 
@@ -108,13 +109,15 @@ canvas{
   .topnav{
     flex-direction: row;
     top: 15px;
-    justify-content: center;    
+    justify-content: center;   
+    height: fit-content; 
   }
 
 }
 .topnav button {
   animation: 7s buttonglow infinite;
-  width: 55px;
+  width: fit-content;
+  padding: 20px;
   height: 55px;
   border-radius: 50%;
   border: none;
@@ -178,9 +181,7 @@ section{
   animation: 5s textglow infinite;
 
 }
-.Headers img{
-  width: auto;
-}
+
 .Textbox {
   padding: 10px;
   margin: 10px;
@@ -188,12 +189,24 @@ section{
   display: flex;
 }
 
-.AboutMe{
-  font: optional;
+.AboutMe {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: top;
 }
 
 .AboutMe button{
   border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.Textbox .left {
+  display: flex;
+  flex-direction: column;
+}
+
+.Textbox .right {
+  margin-left: auto;
 }
 
 .MyProjects{
@@ -217,7 +230,7 @@ section{
   width: 400px;
   padding: 12px;
 
-  transition: flex 400ms cubic-bezier(1, 0.0, 0.4, 1);
+  transition: flex-basis 0.4s ease;
 }
 
 
@@ -272,6 +285,7 @@ section{
 }
 .project.shrink{
   flex: 1 1 40px;
+
 }
 .project button{
   min-height: 50px;
@@ -287,19 +301,39 @@ section{
 
 .project button:hover{
   transition: 0.4s ease;
-  color: rgb(58, 126, 204);
+  color: rgb(9, 53, 91);
   transform: translateX(-10px);
 }
-.project button span{
+.project button {
   position: relative;
   font-size: 15px;
   background-color: transparent;
-}
-.project button span:after{
-  content: '\00BB';
-  opacity: 0;
+  border: none;
+  cursor: pointer;
 }
 
+.project button span {
+  position: relative;
+  display: inline-block;
+  transition: padding-right 0.3s ease;
+}
+
+.project button span:after {
+  content: '\00BB';
+  position: absolute;
+  right: -15px;
+  opacity: 0;
+  transition: opacity 0.3s ease, right 0.3s ease;
+}
+
+.project button:hover span {
+  padding-right: 20px;
+}
+
+.project button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 .project-animate{
   animation: fadein 0.5s ease;
 }
@@ -319,7 +353,7 @@ section{
 }
 
 .ContactMe a{
-  color: #92bcff;
+  color: #0c3f6f;
   text-decoration: none;
   font-weight: 500;
 }

@@ -1,7 +1,7 @@
 class ballz {
   constructor(ctx,canvas) {
     this.y = 200;
-    this.size = 2;
+    this.size = 1.7;
     this.color = "white";
     this.ctx = ctx; 
     this.canvas = canvas;
@@ -21,8 +21,15 @@ class ballz {
     if(this.x>this.canvas.width){
         this.x=0;
     }
-    this.x+=0.004;
+    if (this.y < (360 + this.canvas.height / 2) &&
+this.y > (-360 + this.canvas.height / 2)){
+        this.x+=0.004;
+        this.y = 380*Math.sin(this.x)+(this.canvas.height/2);
+
+    }else{
+    this.x+=0.003;
     this.y = 380*Math.sin(this.x)+(this.canvas.height/2)
+    }
 
   }
 }
@@ -37,6 +44,7 @@ function hovernavbutton(){
     $("#nav2").addClass("hover-projects");
     $("#nav3").addClass("hover-contacts");
 }
+
 
 //myproject functions
 function openProject(projectID) {
@@ -149,6 +157,7 @@ $("#nav1 span").text("home");
 $("#nav2 span").text("projects");
 $("#nav3 span").text("projects");
 //graph function tingy real time shi
+
 $(document).ready(function() {
     hovernavbutton()
     function loop() {
@@ -166,22 +175,51 @@ $(document).ready(function() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 
-    const balls= [];
-
+    const balls = [];
 
     const ctx = canvas.getContext("2d");
 
     while (balls.length < 80) {
-        const ball = new ballz(ctx,canvas);
+        const ball = new ballz(ctx, canvas);
         balls.push(ball);
     }
     loop();
+
+
+
+    let aboutOpen = true;
+
+    $("#aboutBtn").on("click", function () {
+    
+
+    if (aboutOpen) {
+        $("#title").text("Hard skills");
+        $("#infotext").html(
+            ">Python <br> >SQL <br> >JS"
+        );
+        
+        $("#mii_icon").attr("src", "mii_icon3.png");
+        $("#aboutBtn").text("Back");
+    } else {
+        $("#title").text("First year BSc Mathematics with Computing student @ QMUL");
+        $("#mii_icon").attr("src", "mii_icon.png");
+        $("#aboutBtn").text("Read more");
+        $("#infotext").html(" ");
+    }
+
+    aboutOpen = !aboutOpen;
+});
+
     $("#mii_icon").hover(function() {
         $(this).attr("src", "mii_icon2.png");
     }, function() {
-        $(this).attr("src", "mii_icon.png"); // reset when mouse leaves
+        if (aboutOpen){
+            $(this).attr("src", "mii_icon.png");  
+        }else{
+          $(this).attr("src", "mii_icon3.png");  
+        }
+        
     });
 
-        
 
-  });
+});
