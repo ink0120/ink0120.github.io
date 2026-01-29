@@ -18,19 +18,18 @@ class ballz {
   }
 
   movement(){
-    if(this.x>this.canvas.width){
-        this.x=0;
-    }
-    if (this.y < (360 + this.canvas.height / 2) &&
-this.y > (-360 + this.canvas.height / 2)){
+    if(this.x>this.canvas.width){this.x=0;}
+
+    if (this.y < (360 + this.canvas.height / 2) && 
+        this.y > (-360 + this.canvas.height / 2))
+    {
         this.x+=0.004;
         this.y = 380*Math.sin(this.x)+(this.canvas.height/2);
 
-    }else{
-    this.x+=0.003;
+    } else{
+    this.x+=0.0026;
     this.y = 380*Math.sin(this.x)+(this.canvas.height/2)
     }
-
   }
 }
 
@@ -101,7 +100,7 @@ function displayProject(projectID) {
 
         setTimeout(() => {
         section.remove();
-        }, 300); 
+        }, 500); 
     });
     }
 
@@ -113,11 +112,11 @@ function displayProject(projectID) {
       if (projectID === "project1"){
         $projectImage.attr("src", "Chemistry-Uno.jpeg");
         $projectTitle.text("Chemistry card game");
-        $projectDesc.text("Skills: Python, SQLite");
+        $projectDesc.text("Skills: Python, SQL, Data structures, OOP");
         $gitHubLink
             .attr("href", "https://youtube.com")
-            .attr("title", "Link on github.")
-            .text("Link to GitHub page");
+            .attr("title", "Link to github page.")
+            .text("Read more on GitHub!");
 
       } else if (projectID === "project2"){
          return true;
@@ -128,34 +127,18 @@ function displayProject(projectID) {
    }
 
    function copyText(){
-      navigator.clipboard.writeText("ines.sebaihi20@gmail.com");
-      notification("Copied email to clipboard!");
+        navigator.clipboard.writeText("ines.sebaihi20@gmail.com");
+        const $notification = $('<div class="notification">Copied to clipboard!</div>');
+        $('body').append($notification);
+        $notification.fadeIn();
+        setTimeout(() => {
+            $notification.fadeOut(400, function() {
+            $(this).remove();
+            });
+        }, 2000);
    }
 
-   function notification(text){
-      const notif = document.createElement("div");
-      notif.classList.add("notification");
-      requestAnimationFrame(() => {
-         notif.classList.add("fadein");
-      });
-      const notiftext = document.createElement("p");
-      
-      notiftext.innerHTML = text;
-      notif.appendChild(notiftext);
-      
 
-      document.body.appendChild(notif);
-      setTimeout(() => {
-         notif.classList.remove("fadein")
-         notif.classList.add("fadeout");
-
-         notif.addEventListener("transitionend", () => notif.remove())
-      }, 3000);
-
-   }
-$("#nav1 span").text("home");
-$("#nav2 span").text("projects");
-$("#nav3 span").text("projects");
 //graph function tingy real time shi
 
 $(document).ready(function() {
@@ -171,6 +154,18 @@ $(document).ready(function() {
         requestAnimationFrame(loop);
     }
 
+
+    function skillboxanimate(skills){ 
+        for (let i = 0;i<skills.length;i++){
+            
+            setTimeout(() => {
+            skills.removeClass("animate");
+            $(skills[i]).addClass("animate");
+            }, i * 1500);
+
+        }
+    }
+
     const canvas = document.getElementById("graph");
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -184,28 +179,37 @@ $(document).ready(function() {
         balls.push(ball);
     }
     loop();
-
-
-
     let aboutOpen = true;
 
     $("#aboutBtn").on("click", function () {
+        $(".Textbox .left").addClass("animate");
     
 
     if (aboutOpen) {
-        $("#title").text("Hard skills");
-        $("#infotext").html(
-            ">Python <br> >SQL <br> >JS"
-        );
-        
+        $("#headertext").text("Skills");
+        $("#title").text("Intermediate in:");
+        $("#infotext").text("Other relevant skills:");
+              
         $("#mii_icon").attr("src", "mii_icon3.png");
         $("#aboutBtn").text("Back");
+        $("#skillbox").html("<i class='fa-brands fa-html5'></i> <i class='fa-brands fa-css3-alt'></i> <i class='fa-brands fa-js'></i> <i class='fa-brands fa-python'></i> <i class='fa-solid fa-database'></i>");
+        $("#infotext2").text("Discrete math, working on algorithms and logical reasoning");
+
+        const skills = $("#skillbox i");
+        skillboxanimate(skills);
+
     } else {
+        $("#headertext").text("Ines Sebaihi");
         $("#title").text("First year BSc Mathematics with Computing student @ QMUL");
         $("#mii_icon").attr("src", "mii_icon.png");
         $("#aboutBtn").text("Read more");
-        $("#infotext").html(" ");
+        $("#skillbox").html(" ");
+        $("#infotext").text("");
+        $("#infotext2").text("Seeking experience in software development roles.");
     }
+    setTimeout(() => {
+        $(".Textbox .left").removeClass("animate");
+    }, 500);
 
     aboutOpen = !aboutOpen;
 });

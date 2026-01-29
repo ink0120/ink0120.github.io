@@ -1,86 +1,107 @@
+/* =========================
+   Fonts & Global Styles
+   ========================= */
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100..1000&display=swap');
 
 * {
-    font-family: "DM Sans", sans-serif;
-    &::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 255, 255);
-}
-    &::-webkit-scrollbar-track {
-        background-color: transparent;
-    }
-    &::-webkit-scrollbar {
-        width: 4px;
-        height: 4px;
-        background-color: transparent;
-    }
-}
+  font-family: "DM Sans", sans-serif;
 
-@keyframes textglow{
-  50%{
-    text-shadow:  0px 1px 10px whitesmoke;
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background-color: transparent;
   }
 }
+
+
+/* =========================
+   Animations
+   ========================= */
+
+@keyframes textglow {
+  50% {
+    text-shadow: 0px 1px 10px whitesmoke;
+  }
+}
+
 @keyframes boxglow {
   50% {
-    box-shadow: inset 0 0 5px color-mix(in srgb, white 70%, transparent 30%), 0 0 3px color-mix(in srgb, white 70%, transparent 30%);
+    box-shadow: inset 0 0 5px color-mix(in srgb, white 70%, transparent 30%),
+                0 0 3px color-mix(in srgb, white 70%, transparent 30%);
     transform: translateY(5px);
   }
 }
 
 @keyframes buttonglow {
   50% {
-    box-shadow: inset 0 0 5px color-mix(in srgb, white 70%, transparent 30%), 0 0 3px color-mix(in srgb, white 70%, transparent 30%);
+    box-shadow: inset 0 0 5px color-mix(in srgb, white 70%, transparent 30%),
+                0 0 3px color-mix(in srgb, white 70%, transparent 30%);
     transform: translateY(5px) translateX(5px);
   }
 }
-@keyframes fadein{
-  from{
-    opacity:0;
-    transform: translateY(50px)
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
   }
-  to{
-    opacity:1;
+  to {
+    opacity: 1;
     transform: translateY(0px);
   }
 }
-@keyframes fadeout{
-  from{
-    opacity:1;
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
     transform: translateY(0px);
   }
-  to{
-    opacity:0;
+  to {
+    opacity: 0;
     transform: translateY(50px);
   }
 }
-.jelly{
-  border-radius: 5pt;
-  
-  backdrop-filter: blur(7px) saturate(160%);
-  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
-  background-color: color-mix(in srgb, #fff 12%, transparent);
-  
-  transition: 
-    background-color 400ms 
-      cubic-bezier(1, 0.0, 0.4, 10),
-    box-shadow 400ms
-      cubic-bezier(1, 0.0, 0.4, 1),
-    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
-    flex-grow 400ms cubic-bezier(1,0.0,0.4,1);
+
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }
 
-h1{
-  font-size: 27px;
+@keyframes glowandjump{
+  0%{
+    text-shadow: none;
+    transform: translateY(0px);
+  }
+  50% {
+    text-shadow: 0px 1px 20px whitesmoke;
+    transform: translateY(-10px);
+  }
 }
+/* =========================
+   Base Elements
+   ========================= */
 
-h2{
-  font-size: 22px;
-}
-body{
+body {
   color: #f2f2f2;
-  background-image: linear-gradient(#062c4e,rgb(175, 199, 141));
+  background-image: linear-gradient(#062c4e, rgb(175, 199, 141));
 }
-canvas{
+
+canvas {
   position: fixed;
   color: #25015b;
   background-color: transparent;
@@ -91,6 +112,61 @@ canvas{
   z-index: -1;
 }
 
+h1 {
+  font-size: 27px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+button {
+  color: white;
+  padding: 5px;
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* =========================
+   Layout & Containers
+   ========================= */
+
+.container {
+  height: 100dvh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+section {
+  align-items: center;
+  scroll-snap-align: start;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.jelly {
+  border-radius: 5pt;
+  backdrop-filter: blur(7px) saturate(160%);
+  box-shadow: inset 0 0 3px color-mix(in srgb, #fff 70%, transparent);
+  background-color: color-mix(in srgb, #fff 12%, transparent);
+
+  transition:
+    background-color 400ms cubic-bezier(1, 0.0, 0.4, 10),
+    box-shadow 400ms cubic-bezier(1, 0.0, 0.4, 1),
+    transform 400ms cubic-bezier(1, 0.0, 0.4, 1),
+    flex-grow 400ms cubic-bezier(1, 0.0, 0.4, 1);
+}
+
+
+/* =========================
+   Navigation
+   ========================= */
+
 .topnav {
   position: fixed;
   display: flex;
@@ -99,24 +175,14 @@ canvas{
   gap: 20px;
   top: 0;
   left: 1%;
-  width: auto;        
-  height: 100dvh;    
-  z-index: 100; 
-
+  width: auto;
+  height: 100dvh;
+  z-index: 100;
 }
 
-@media only screen and (max-width: 650px) {
-  .topnav{
-    flex-direction: row;
-    top: 15px;
-    justify-content: center;   
-    height: fit-content; 
-  }
-
-}
 .topnav button {
   animation: 7s buttonglow infinite;
-  width: fit-content;
+  width: 55px;
   padding: 20px;
   height: 55px;
   border-radius: 50%;
@@ -128,44 +194,33 @@ canvas{
   font-size: large;
 }
 
-.topnav button:hover{
+.topnav button:hover {
   transition: 0.4s ease;
   transform: scale(10px);
 }
 
 .nav-button::after {
-    content: "";
+  content: "";
 }
 
 .nav-button.hover-home::after {
-    content: "home";
+  content: "home";
 }
+
 .nav-button.hover-projects::after {
-    content: "projects";
+  content: "projects";
 }
+
 .nav-button.hover-projects::after {
-    content: "contacts";
-}
-
-.container{
-  height: 100dvh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
+  content: "contacts";
 }
 
 
-section{
-  align-items: center;
-  scroll-snap-align: start;
-  height: 100dvh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-}
+/* =========================
+   Header & Textbox
+   ========================= */
 
-.Headers{
+.Headers {
   margin: 10px;
   padding: 10px;
   display: flex;
@@ -176,28 +231,22 @@ section{
   animation: 5s boxglow infinite;
   transform: translateY(0px);
 }
-.Headers h1{
+
+.Headers h1 {
   text-align: center;
   animation: 5s textglow infinite;
-
 }
 
 .Textbox {
   padding: 10px;
   margin: 10px;
   width: 480px;
+  height: auto;
   display: flex;
 }
-
-.AboutMe {
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transform-origin: top;
-}
-
-.AboutMe button{
-  border: none;
-  cursor: pointer;
-  padding: 10px;
+.Textbox h2,h3,h4 {
+  margin-top: 2px;
+  margin-bottom: 8px;
 }
 
 .Textbox .left {
@@ -205,18 +254,61 @@ section{
   flex-direction: column;
 }
 
+.Textbox .left.animate{
+  animation: slidein 0.5s ease forwards;
+
+}
+
 .Textbox .right {
   margin-left: auto;
 }
 
-.MyProjects{
+
+.skillbox {
+  font-size: 40px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.skillbox i.animate{
+  animation: glowandjump 1.5s forwards;
+}
+
+.line{
+  width:100%; 
+  height:2px; 
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+/* =========================
+   About Me
+   ========================= */
+
+.AboutMe {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: top;
+}
+
+.AboutMe button {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+
+/* =========================
+   Projects
+   ========================= */
+
+.MyProjects {
   font: optional;
 }
 
 .projects {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   gap: 12px;
   width: 480px;
 }
@@ -226,27 +318,21 @@ section{
   flex-direction: column;
   align-items: center;
   gap: 12px;
-
   width: 400px;
   padding: 12px;
-
   transition: flex-basis 0.4s ease;
 }
-
 
 .project section {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-
   width: 100%;
   height: fit-content;
   padding: 14px;
-
   border-radius: 12px;
 }
-
 
 .project h2 {
   margin: 0;
@@ -254,12 +340,10 @@ section{
   text-align: center;
 }
 
-
 .project img {
   width: 90%;
   max-width: 280px;
   border-radius: 10px;
-
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
@@ -280,36 +364,33 @@ section{
 .project a:hover {
   text-decoration: underline;
 }
-.project.grow{
+
+.project.grow {
   flex: 1 1 50px;
 }
-.project.shrink{
-  flex: 1 1 40px;
 
+.project.shrink {
+  flex: 1 1 40px;
 }
-.project button{
+
+.project button {
   min-height: 50px;
   width: 100%;
   background-color: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
+  font-size: 15px;
 
   transition:
     flex-grow 400ms cubic-bezier(1, 0.0, 0.4, 1),
     transform 300ms cubic-bezier(1, 0.0, 0.4, 1);
 }
 
-.project button:hover{
+.project button:hover {
   transition: 0.4s ease;
   color: rgb(9, 53, 91);
   transform: translateX(-10px);
-}
-.project button {
-  position: relative;
-  font-size: 15px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 }
 
 .project button span {
@@ -334,33 +415,120 @@ section{
   opacity: 1;
   right: 0;
 }
-.project-animate{
+
+.project-animate {
   animation: fadein 0.5s ease;
 }
 
-.project-unanimate{
+.project-unanimate {
   animation: fadeout 0.5s ease;
 }
-.ContactMe{
+
+
+/* =========================
+   Contact
+   ========================= */
+
+.ContactMe {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 8px;
   margin-bottom: 10px;
 }
-.ContactMe p{
+
+.ContactMe p {
   float: left;
 }
 
-.ContactMe a{
+.ContactMe a {
   color: #0c3f6f;
   text-decoration: none;
   font-weight: 500;
+  padding-right: 5%;
+}
+.ContactMe button{
+  background-color: transparent;
+  border: none;
+  padding-right: 9%;
+  font-size: 15px;
+}
+.ContactMe button span {
+  position: relative;
+  transition: opacity 0.4s ease;
+
 }
 
-button{
-  color: white;
-  padding: 5px;
-  outline: none;
-  box-shadow: none;
+.ContactMe button span::after {
+  content: 'copy';
+  position: absolute;
+  left: 100%; 
+  padding-left: 9%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.ContactMe button:hover span::after {
+  opacity: 1;
+}
+
+.ContactMe button:active {
+  color: rgb(15, 80, 134);
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px; 
+  left: 50%;   
+  transform: translateX(-50%);
+  background-color: white;
+  color: #062c4e;
+  padding: 10px 20px;  
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  opacity: 0.95;
+  z-index: 1000;
+  white-space: nowrap; 
+}
+
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media only screen and (max-width: 650px) {
+
+  .topnav {
+    flex-direction: row;
+    top: 15px;
+    justify-content: center;
+    height: fit-content;
+  }
+
+  .Textbox {
+    width: 360px;
+  }
+
+  .Textbox .left {
+    width: 100%;
+  }
+  .Textbox .right{
+    width: 0%;
+  }
+
+  .Textbox img{
+    width: 0px;
+  }
+
+  .Headers {
+    width: 80%;
+  }
 }

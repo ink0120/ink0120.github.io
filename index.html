@@ -4,91 +4,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ines Sebaihi</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- jQuery and Script -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="script.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-...yourhash..." 
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
 </head>
 <body>
     <div class="container">
-      <canvas id="graph" width="600" height="600"></canvas>
+        <canvas id="graph" width="600" height="600"></canvas>
 
-        <!-- Sidebar Navigation -->
         <div class="topnav">
             <button class="jelly" id="nav1" onclick="goTo('AboutMe')">
                 <i class="fa fa-home"></i>
                 <span></span>
             </button>
             <button class="jelly" id="nav2" onclick="goTo('MyProjects')">
-                <i class="fa fa-file-code-o"></i>
+                <i class="fa-solid fa-file-code"></i>
                 <span></span>
             </button>
             <button class="jelly" id="nav3" onclick="goTo('ContactMe')">
                 <i class="fa fa-at"></i>
                 <span></span>
             </button>
-            <button class="jelly" id="nav3" onclick="openSettings()">
-                <i class="fa fa-cog"></i>
-                <span></span>
-            </button>
         </div>
 
-        <!-- About Me Section -->
         <section class="AboutMe" id="AboutMe">
             <div class="Headers jelly">
                 <h1 id="headertext">Ines Sebaihi</h1>
             </div>
             <div class="jelly">
                 <div class="Textbox">
-                  <div class = "left">
-                    <h2 id="title">
-                        >
-                     First year BSc Mathematics with Computing student @ QMUL
-                    </h2>
-                    <h3 id="infotext"> </h3>
+                    <div class="left">
+                        <h2 id="title">First year BSc Mathematics with Computing student @ QMUL</h2>
+                        <div class="skillbox" id="skillbox"></div>
+                        <div class="line"></div>
+                        <h3 id="infotext" style="text-decoration: underline;"></h3>
+                        <h4 id="infotext2">Seeking experience in software development roles.</h4>
                     </div>
-                    <div class = "right">
-                    <img src="mii_icon.png" width="200" id="mii_icon" alt="Profile Icon">
+                    <div class="right">
+                        <img src="mii_icon.png" width="200" id="mii_icon" alt="Profile Icon">
                     </div>
-                  </div>
+                </div>
             </div>
             <button class="jelly" id="aboutBtn">Read more</button>
         </section>
 
-        <!-- My Projects Section -->
         <section class="MyProjects" id="MyProjects">
-              <div class="Headers jelly">
-    <h1>Projects</h1>
-  </div>
-
-  <div class="projects">
-
-    <div class="project jelly" id="project1">
-      <button onclick="openProject('project1')">
-        <span>Project 1</span>
-      </button>
-    </div>
-
-    <div class="project jelly" id="project2">
-      <button onclick="openProject('project2')">
-        <span>Project 2</span>
-      </button>
-    </div>
-
-    <div class="project jelly" id="project3">
-      <button onclick="openProject('project3')">
-        <span>Project 3</span>
-      </button>
-    </div>
-
-  </div>
+            <div class="Headers jelly">
+                <h1>Projects</h1>
+            </div>
+            <div class="projects">
+                <div class="project jelly" id="project1">
+                    <button onclick="openProject('project1')">
+                        <span>Project 1</span>
+                    </button>
+                </div>
+                <div class="project jelly" id="project2">
+                    <button onclick="openProject('project2')">
+                        <span>WIP!!</span>
+                    </button>
+                </div>
+                <div class="project jelly" id="project3">
+                    <button onclick="openProject('project3')">
+                        <span>WIP!!</span>
+                    </button>
+                </div>
+            </div>
         </section>
 
-        <!-- Contact Me Section -->
         <section class="ContactMe" id="ContactMe">
             <div class="Headers jelly">
                 <h1>Get in contact!</h1>
@@ -96,19 +85,24 @@
             <div class="jelly">
                 <div class="Textbox">
                     <a href="https://github.com/ink0120" target="_blank">
-                        <i class="fa fa-github"></i> GitHub
+                        <i class="fa-brands fa-github"></i> GitHub
                     </a>
                     <span>| @ink0120</span>
                 </div>
                 <div class="Textbox">
                     <a href="https://www.linkedin.com/in/ines-sebaihi-98438830b" target="_blank">
-                        <i class="fa fa-linkedin-square"></i> LinkedIn
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
                     </a>
                     <span>| Ines Sebaihi</span>
                 </div>
             </div>
+            <div class="jelly">
+                <div class="Textbox">
+                    <button onclick="copyText()"><span>Email</span></button>
+                    <p>| ines.sebaihi20@gmail.com</p>
+                </div>
+            </div>
         </section>
-
     </div>
 </body>
 </html>
