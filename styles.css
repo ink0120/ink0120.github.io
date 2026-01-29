@@ -320,7 +320,7 @@ section {
   gap: 12px;
   width: 400px;
   padding: 12px;
-  transition: flex-basis 0.4s ease;
+  transition: flex 0.4s ease;
 }
 
 .project section {
