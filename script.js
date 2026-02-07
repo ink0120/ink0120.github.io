@@ -1,12 +1,13 @@
-class ballz {
+class Balls {
   constructor(ctx,canvas) {
-    this.y = 200;
+    
     this.size = 1.7;
     this.color = "white";
     this.ctx = ctx; 
     this.canvas = canvas;
 
     this.x = Math.random() * (this.canvas.width);
+    this.y = 200;
 
   }
 
@@ -175,7 +176,7 @@ $(document).ready(function() {
     const ctx = canvas.getContext("2d");
 
     while (balls.length < 80) {
-        const ball = new ballz(ctx, canvas);
+        const ball = new Balls(ctx, canvas);
         balls.push(ball);
     }
     loop();
