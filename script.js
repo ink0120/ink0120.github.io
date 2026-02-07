@@ -34,10 +34,10 @@ class Balls {
   }
 }
 
+
 //nav bar functions
 function goTo(page){
-    const gotopage = $("#"+ page)[0];
-    gotopage.scrollIntoView({ behavior: 'smooth' });
+    $("#"+ page)[0].scrollIntoView({ behavior: 'smooth' });
 }
 function hovernavbutton(){
     $("#nav1").addClass("hover-home");
@@ -115,7 +115,7 @@ function displayProject(projectID) {
         $projectTitle.text("Chemistry card game");
         $projectDesc.text("Skills: Python, SQL, Data structures, OOP");
         $gitHubLink
-            .attr("href", "https://youtube.com")
+            .attr("href", "https://github.com/ink0120/Chemistry-Uno")
             .attr("title", "Link to github page.")
             .text("Read more on GitHub!");
 
